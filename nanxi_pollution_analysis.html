@@ -1,0 +1,828 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>龙海南溪污染源调查分析报告</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+            <style>
+                body { font-family: 'Microsoft YaHei', sans-serif; }
+                .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem 0; }
+                .section { padding: 2rem 0; border-bottom: 1px solid #eee; }
+                .chart-container { height: 400px; margin: 1rem 0; }
+                .summary-card { background: #f8f9fa; border-radius: 10px; padding: 1.5rem; margin: 1rem 0; }
+            </style>
+        </head>
+        <body>
+            <div class="header text-center">
+                <div class="container">
+                    <h1>龙海南溪污染源调查分析报告</h1>
+                    <p class="lead">基于2019年龙海南溪水质检测与污染源调查数据</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- 摘要部分 -->
+                <div class="section">
+                    <h2>调查摘要</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="summary-card">
+                                <h5>📊 调查范围</h5>
+                                <p>官浔-东泗交界至浮宫桥，全长22.3公里，覆盖4个乡镇</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="summary-card">
+                                <h5>🔍 主要发现</h5>
+                                <p>共发现101个排污点，主要污染源为水产养殖和生活污水</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 地图部分 -->
+                <div class="section">
+                    <h2>污染源分布地图</h2>
+                    <div id="map" style="height: 600px; width: 100%;">
+                        <div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_4290a4592b216a68b08287ac49632daf {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+        
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+        &lt;div style=&quot;position: fixed; 
+                    top: 10px; left: 50px; width: 200px; height: 160px; 
+                    background-color: white; border:2px solid grey; z-index:9999; 
+                    font-size:14px; padding: 10px&quot;&gt;
+        &lt;p&gt;&lt;b&gt;图例&lt;/b&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;span style=&quot;background:green; width:15px; height:15px; display:inline-block;&quot;&gt;&lt;/span&gt; III类水质&lt;/p&gt;
+        &lt;p&gt;&lt;span style=&quot;background:blue; width:15px; height:15px; display:inline-block;&quot;&gt;&lt;/span&gt; IV类水质&lt;/p&gt;
+        &lt;p&gt;&lt;span style=&quot;background:orange; width:15px; height:15px; display:inline-block;&quot;&gt;&lt;/span&gt; V类水质&lt;/p&gt;
+        &lt;p&gt;&lt;span style=&quot;background:red; width:15px; height:15px; display:inline-block;&quot;&gt;&lt;/span&gt; 劣V类水质&lt;/p&gt;
+        &lt;p&gt;&lt;i class=&quot;fa fa-map-marker&quot; style=&quot;color:red&quot;&gt;&lt;/i&gt; 支流污染源&lt;/p&gt;
+        &lt;/div&gt;
+        
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_4290a4592b216a68b08287ac49632daf&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_4290a4592b216a68b08287ac49632daf = L.map(
+                &quot;map_4290a4592b216a68b08287ac49632daf&quot;,
+                {
+                    center: [24.35, 117.83],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 12,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8a9b24d0422abc465d1c71caa3f917a8 = L.tileLayer(
+                &quot;https://webrd02.is.autonavi.com/appmaptile?lang=zh_cn\u0026size=1\u0026scale=1\u0026style=8\u0026x={x}\u0026y={y}\u0026z={z}&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 18,
+  &quot;maxNativeZoom&quot;: 18,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u9ad8\u5fb7\u5730\u56fe&quot;,
+  &quot;subdomains&quot;: &quot;abc&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+        
+    
+            tile_layer_8a9b24d0422abc465d1c71caa3f917a8.addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+            var circle_marker_2724db0202161ae29c725bed28da97b6 = L.circleMarker(
+                [24.3511, 117.7631],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;green&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;green&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_3c8a8e2ceee5c58984301b89efeb408b = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_0e19f61f59adebeac30c4671d9c7f98e = $(`&lt;div id=&quot;html_0e19f61f59adebeac30c4671d9c7f98e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;下浦桥头&lt;/b&gt;&lt;br&gt;                 水质类别: III类&lt;br&gt;                 COD: 15.05 mg/L&lt;br&gt;                 氨氮: 0.148 mg/L&lt;br&gt;                 总磷: 0.023 mg/L&lt;br&gt;                 区域: 东泗乡                 &lt;/div&gt;`)[0];
+                popup_3c8a8e2ceee5c58984301b89efeb408b.setContent(html_0e19f61f59adebeac30c4671d9c7f98e);
+            
+        
+
+        circle_marker_2724db0202161ae29c725bed28da97b6.bindPopup(popup_3c8a8e2ceee5c58984301b89efeb408b)
+        ;
+
+        
+    
+    
+            circle_marker_2724db0202161ae29c725bed28da97b6.bindTooltip(
+                `&lt;div&gt;
+                     下浦桥头
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_ce8c78451e9e85c3c8dec3e7e183b294 = L.circleMarker(
+                [24.3613, 117.7758],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;red&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;red&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_390072b2d3c54beb3acde2409fc63382 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_738350e6d1fe5f5d42f70654057f09a5 = $(`&lt;div id=&quot;html_738350e6d1fe5f5d42f70654057f09a5&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;东泗乡&lt;/b&gt;&lt;br&gt;                 水质类别: 劣V类&lt;br&gt;                 COD: 15.05 mg/L&lt;br&gt;                 氨氮: 0.475 mg/L&lt;br&gt;                 总磷: 0.772 mg/L&lt;br&gt;                 区域: 东泗乡                 &lt;/div&gt;`)[0];
+                popup_390072b2d3c54beb3acde2409fc63382.setContent(html_738350e6d1fe5f5d42f70654057f09a5);
+            
+        
+
+        circle_marker_ce8c78451e9e85c3c8dec3e7e183b294.bindPopup(popup_390072b2d3c54beb3acde2409fc63382)
+        ;
+
+        
+    
+    
+            circle_marker_ce8c78451e9e85c3c8dec3e7e183b294.bindTooltip(
+                `&lt;div&gt;
+                     东泗乡
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_86f7920cf8c6033ae41772f922b0b483 = L.circleMarker(
+                [24.3686, 117.7979],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;green&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;green&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_5514daccc3e62f145c4d3365e1b6bf6a = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_0a0f018a571310e6516e67f12dcb0487 = $(`&lt;div id=&quot;html_0a0f018a571310e6516e67f12dcb0487&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;董门头&lt;/b&gt;&lt;br&gt;                 水质类别: III类&lt;br&gt;                 COD: 19.56 mg/L&lt;br&gt;                 氨氮: 0.058 mg/L&lt;br&gt;                 总磷: 0.034 mg/L&lt;br&gt;                 区域: 东泗乡                 &lt;/div&gt;`)[0];
+                popup_5514daccc3e62f145c4d3365e1b6bf6a.setContent(html_0a0f018a571310e6516e67f12dcb0487);
+            
+        
+
+        circle_marker_86f7920cf8c6033ae41772f922b0b483.bindPopup(popup_5514daccc3e62f145c4d3365e1b6bf6a)
+        ;
+
+        
+    
+    
+            circle_marker_86f7920cf8c6033ae41772f922b0b483.bindTooltip(
+                `&lt;div&gt;
+                     董门头
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_55742b9a84826dcf6e68a20edf6fa219 = L.circleMarker(
+                [24.3666, 117.8169],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_4e4bb2e2e3a3fc6e8555b34ac5412902 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_4bcb5e20ab0e6dc834889963f8f58b46 = $(`&lt;div id=&quot;html_4bcb5e20ab0e6dc834889963f8f58b46&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;南溪桥闸&lt;/b&gt;&lt;br&gt;                 水质类别: IV类&lt;br&gt;                 COD: 21.06 mg/L&lt;br&gt;                 氨氮: 0.326 mg/L&lt;br&gt;                 总磷: 0.039 mg/L&lt;br&gt;                 区域: 东泗乡                 &lt;/div&gt;`)[0];
+                popup_4e4bb2e2e3a3fc6e8555b34ac5412902.setContent(html_4bcb5e20ab0e6dc834889963f8f58b46);
+            
+        
+
+        circle_marker_55742b9a84826dcf6e68a20edf6fa219.bindPopup(popup_4e4bb2e2e3a3fc6e8555b34ac5412902)
+        ;
+
+        
+    
+    
+            circle_marker_55742b9a84826dcf6e68a20edf6fa219.bindTooltip(
+                `&lt;div&gt;
+                     南溪桥闸
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_7221027f3cae0cc10566747c3c100369 = L.circleMarker(
+                [24.3666, 117.8486],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;orange&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;orange&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_0dfc487e768480ba050e6a5688da7255 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_2f41265aba5882efdf9c45d35465cc06 = $(`&lt;div id=&quot;html_2f41265aba5882efdf9c45d35465cc06&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;大霞村&lt;/b&gt;&lt;br&gt;                 水质类别: V类&lt;br&gt;                 COD: 33.11 mg/L&lt;br&gt;                 氨氮: 0.487 mg/L&lt;br&gt;                 总磷: 0.059 mg/L&lt;br&gt;                 区域: 白水镇                 &lt;/div&gt;`)[0];
+                popup_0dfc487e768480ba050e6a5688da7255.setContent(html_2f41265aba5882efdf9c45d35465cc06);
+            
+        
+
+        circle_marker_7221027f3cae0cc10566747c3c100369.bindPopup(popup_0dfc487e768480ba050e6a5688da7255)
+        ;
+
+        
+    
+    
+            circle_marker_7221027f3cae0cc10566747c3c100369.bindTooltip(
+                `&lt;div&gt;
+                     大霞村
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_d754f0de2d7acdc24a67b583ad925d89 = L.circleMarker(
+                [24.3467, 117.8509],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_10a15e1d608540fa378eb5573a4a16e1 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_80880b35f937ab7e7f7677efd565a92e = $(`&lt;div id=&quot;html_80880b35f937ab7e7f7677efd565a92e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;下田村&lt;/b&gt;&lt;br&gt;                 水质类别: IV类&lt;br&gt;                 COD: 22.57 mg/L&lt;br&gt;                 氨氮: 0.517 mg/L&lt;br&gt;                 总磷: 0.049 mg/L&lt;br&gt;                 区域: 白水镇                 &lt;/div&gt;`)[0];
+                popup_10a15e1d608540fa378eb5573a4a16e1.setContent(html_80880b35f937ab7e7f7677efd565a92e);
+            
+        
+
+        circle_marker_d754f0de2d7acdc24a67b583ad925d89.bindPopup(popup_10a15e1d608540fa378eb5573a4a16e1)
+        ;
+
+        
+    
+    
+            circle_marker_d754f0de2d7acdc24a67b583ad925d89.bindTooltip(
+                `&lt;div&gt;
+                     下田村
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_572170ad910f1372db92807ac11d2dfa = L.circleMarker(
+                [24.3389, 117.8635],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;red&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;red&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_0d4b954acfdc3dba8bd7e295a84f077f = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_3423e21e5a0577e48dc950d77fcad50a = $(`&lt;div id=&quot;html_3423e21e5a0577e48dc950d77fcad50a&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;148乡道桥&lt;/b&gt;&lt;br&gt;                 水质类别: 劣V类&lt;br&gt;                 COD: 28.59 mg/L&lt;br&gt;                 氨氮: 0.07 mg/L&lt;br&gt;                 总磷: 0.787 mg/L&lt;br&gt;                 区域: 白水镇                 &lt;/div&gt;`)[0];
+                popup_0d4b954acfdc3dba8bd7e295a84f077f.setContent(html_3423e21e5a0577e48dc950d77fcad50a);
+            
+        
+
+        circle_marker_572170ad910f1372db92807ac11d2dfa.bindPopup(popup_0d4b954acfdc3dba8bd7e295a84f077f)
+        ;
+
+        
+    
+    
+            circle_marker_572170ad910f1372db92807ac11d2dfa.bindTooltip(
+                `&lt;div&gt;
+                     148乡道桥
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_fbfad9132113311a126575f6c012b9f0 = L.circleMarker(
+                [24.3326, 117.8861],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_20fd6318b84ec4492bbb936c524749f3 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_663be96153b9453f0efe08aa7bcddd88 = $(`&lt;div id=&quot;html_663be96153b9453f0efe08aa7bcddd88&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;方田村&lt;/b&gt;&lt;br&gt;                 水质类别: IV类&lt;br&gt;                 COD: 25.58 mg/L&lt;br&gt;                 氨氮: 0.064 mg/L&lt;br&gt;                 总磷: 0.054 mg/L&lt;br&gt;                 区域: 白水镇                 &lt;/div&gt;`)[0];
+                popup_20fd6318b84ec4492bbb936c524749f3.setContent(html_663be96153b9453f0efe08aa7bcddd88);
+            
+        
+
+        circle_marker_fbfad9132113311a126575f6c012b9f0.bindPopup(popup_20fd6318b84ec4492bbb936c524749f3)
+        ;
+
+        
+    
+    
+            circle_marker_fbfad9132113311a126575f6c012b9f0.bindTooltip(
+                `&lt;div&gt;
+                     方田村
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_3cdc895b8724da780c8a88bc51c034c1 = L.circleMarker(
+                [24.345, 117.8968],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;green&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;green&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_4ef6fbd7710ff0a280f9e6a9fae1aad2 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_18daa67ba8f6c0b6030e0a7e6fd3de3f = $(`&lt;div id=&quot;html_18daa67ba8f6c0b6030e0a7e6fd3de3f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;招银疏港路桥下&lt;/b&gt;&lt;br&gt;                 水质类别: III类&lt;br&gt;                 COD: 13.54 mg/L&lt;br&gt;                 氨氮: 0.118 mg/L&lt;br&gt;                 总磷: 0.054 mg/L&lt;br&gt;                 区域: 浮宫镇                 &lt;/div&gt;`)[0];
+                popup_4ef6fbd7710ff0a280f9e6a9fae1aad2.setContent(html_18daa67ba8f6c0b6030e0a7e6fd3de3f);
+            
+        
+
+        circle_marker_3cdc895b8724da780c8a88bc51c034c1.bindPopup(popup_4ef6fbd7710ff0a280f9e6a9fae1aad2)
+        ;
+
+        
+    
+    
+            circle_marker_3cdc895b8724da780c8a88bc51c034c1.bindTooltip(
+                `&lt;div&gt;
+                     招银疏港路桥下
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var circle_marker_43cf6c99130312f010de8852f7e99d6d = L.circleMarker(
+                [24.3619, 117.9028],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;green&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;green&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+        var popup_71ede5ef78157db5cfd167f6c40290d6 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_c34a0206c3f0058299c15875ebe722b7 = $(`&lt;div id=&quot;html_c34a0206c3f0058299c15875ebe722b7&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;浮宫大桥&lt;/b&gt;&lt;br&gt;                 水质类别: III类&lt;br&gt;                 COD: 19.56 mg/L&lt;br&gt;                 氨氮: 0.201 mg/L&lt;br&gt;                 总磷: 0.039 mg/L&lt;br&gt;                 区域: 浮宫镇                 &lt;/div&gt;`)[0];
+                popup_71ede5ef78157db5cfd167f6c40290d6.setContent(html_c34a0206c3f0058299c15875ebe722b7);
+            
+        
+
+        circle_marker_43cf6c99130312f010de8852f7e99d6d.bindPopup(popup_71ede5ef78157db5cfd167f6c40290d6)
+        ;
+
+        
+    
+    
+            circle_marker_43cf6c99130312f010de8852f7e99d6d.bindTooltip(
+                `&lt;div&gt;
+                     浮宫大桥
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var marker_f952426fa487b6751adf2237842e9f11 = L.marker(
+                [24.3581, 117.8995],
+                {
+}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+            var icon_63562deb7c4d48e66852a494714dbce6 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_ed16e5101d43b3da837c46cb23f8923c = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_656d6da81b7b6326676ed55d4c61b4f3 = $(`&lt;div id=&quot;html_656d6da81b7b6326676ed55d4c61b4f3&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;支1-龙润果蔬&lt;/b&gt;&lt;br&gt;                 污染类型: 水产养殖&lt;br&gt;                 水质类别: 劣V类&lt;br&gt;                 COD: 40.63 mg/L&lt;br&gt;                 排放方式: 连续                 &lt;/div&gt;`)[0];
+                popup_ed16e5101d43b3da837c46cb23f8923c.setContent(html_656d6da81b7b6326676ed55d4c61b4f3);
+            
+        
+
+        marker_f952426fa487b6751adf2237842e9f11.bindPopup(popup_ed16e5101d43b3da837c46cb23f8923c)
+        ;
+
+        
+    
+    
+            marker_f952426fa487b6751adf2237842e9f11.bindTooltip(
+                `&lt;div&gt;
+                     支1-龙润果蔬
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+                marker_f952426fa487b6751adf2237842e9f11.setIcon(icon_63562deb7c4d48e66852a494714dbce6);
+            
+    
+            var marker_52ccf56f58021db71bddf37d57929304 = L.marker(
+                [24.3569, 117.8449],
+                {
+}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+            var icon_a144c9372bfc67daf29dbec61236b336 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_0f710cf2acfdbb6f8672ad90f92df4d0 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_5ab74ab0790eb0cd6a60f47f66a17b9a = $(`&lt;div id=&quot;html_5ab74ab0790eb0cd6a60f47f66a17b9a&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;支12-顶詹&lt;/b&gt;&lt;br&gt;                 污染类型: 水产养殖&lt;br&gt;                 水质类别: 劣V类&lt;br&gt;                 COD: 85.78 mg/L&lt;br&gt;                 排放方式: 连续                 &lt;/div&gt;`)[0];
+                popup_0f710cf2acfdbb6f8672ad90f92df4d0.setContent(html_5ab74ab0790eb0cd6a60f47f66a17b9a);
+            
+        
+
+        marker_52ccf56f58021db71bddf37d57929304.bindPopup(popup_0f710cf2acfdbb6f8672ad90f92df4d0)
+        ;
+
+        
+    
+    
+            marker_52ccf56f58021db71bddf37d57929304.bindTooltip(
+                `&lt;div&gt;
+                     支12-顶詹
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+                marker_52ccf56f58021db71bddf37d57929304.setIcon(icon_a144c9372bfc67daf29dbec61236b336);
+            
+    
+            var marker_14095b6f030de2f38e97cf2f68613d30 = L.marker(
+                [24.3695, 117.8334],
+                {
+}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+            var icon_3b8a9d9fb7d22f64e712515164e95997 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_f7af2bcd7bba25ba746c241fad144b58 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_5cddc34f94606e131c0038370c5569a0 = $(`&lt;div id=&quot;html_5cddc34f94606e131c0038370c5569a0&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;支16-太江村&lt;/b&gt;&lt;br&gt;                 污染类型: 混合污水&lt;br&gt;                 水质类别: 劣V类&lt;br&gt;                 COD: 78.26 mg/L&lt;br&gt;                 排放方式: 连续                 &lt;/div&gt;`)[0];
+                popup_f7af2bcd7bba25ba746c241fad144b58.setContent(html_5cddc34f94606e131c0038370c5569a0);
+            
+        
+
+        marker_14095b6f030de2f38e97cf2f68613d30.bindPopup(popup_f7af2bcd7bba25ba746c241fad144b58)
+        ;
+
+        
+    
+    
+            marker_14095b6f030de2f38e97cf2f68613d30.bindTooltip(
+                `&lt;div&gt;
+                     支16-太江村
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+                marker_14095b6f030de2f38e97cf2f68613d30.setIcon(icon_3b8a9d9fb7d22f64e712515164e95997);
+            
+    
+            var marker_b4a483ab187da998c18bc457228bb042 = L.marker(
+                [24.3649, 117.7841],
+                {
+}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+            var icon_4d95ba5277194bbabf98d5205e474e37 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_15ca0090ce1fd3884aaf473bd669a8cf = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_d0a52961d794907030ce8078df5977b5 = $(`&lt;div id=&quot;html_d0a52961d794907030ce8078df5977b5&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;支28-田洋&lt;/b&gt;&lt;br&gt;                 污染类型: 混合污水&lt;br&gt;                 水质类别: 劣V类&lt;br&gt;                 COD: 76.75 mg/L&lt;br&gt;                 排放方式: 连续                 &lt;/div&gt;`)[0];
+                popup_15ca0090ce1fd3884aaf473bd669a8cf.setContent(html_d0a52961d794907030ce8078df5977b5);
+            
+        
+
+        marker_b4a483ab187da998c18bc457228bb042.bindPopup(popup_15ca0090ce1fd3884aaf473bd669a8cf)
+        ;
+
+        
+    
+    
+            marker_b4a483ab187da998c18bc457228bb042.bindTooltip(
+                `&lt;div&gt;
+                     支28-田洋
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+                marker_b4a483ab187da998c18bc457228bb042.setIcon(icon_4d95ba5277194bbabf98d5205e474e37);
+            
+    
+            var marker_9cde28765f1d42d210ca3d974f671498 = L.marker(
+                [24.3685, 117.7932],
+                {
+}
+            ).addTo(map_4290a4592b216a68b08287ac49632daf);
+        
+    
+            var icon_d8d6d127bc40c7baaabbd9677dc5a809 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_d16f4cdfe047f1c0c68b76b8965df081 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_0e2e879b89355a4910f6abaa0ad20604 = $(`&lt;div id=&quot;html_0e2e879b89355a4910f6abaa0ad20604&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;                 &lt;b&gt;支38-大唐&lt;/b&gt;&lt;br&gt;                 污染类型: 混合污水&lt;br&gt;                 水质类别: 劣V类&lt;br&gt;                 COD: 55.68 mg/L&lt;br&gt;                 排放方式: 连续                 &lt;/div&gt;`)[0];
+                popup_d16f4cdfe047f1c0c68b76b8965df081.setContent(html_0e2e879b89355a4910f6abaa0ad20604);
+            
+        
+
+        marker_9cde28765f1d42d210ca3d974f671498.bindPopup(popup_d16f4cdfe047f1c0c68b76b8965df081)
+        ;
+
+        
+    
+    
+            marker_9cde28765f1d42d210ca3d974f671498.bindTooltip(
+                `&lt;div&gt;
+                     支38-大唐
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+                marker_9cde28765f1d42d210ca3d974f671498.setIcon(icon_d8d6d127bc40c7baaabbd9677dc5a809);
+            
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
+                    </div>
+                </div>
+
+                <!-- 图表分析部分 -->
+                <div class="section">
+                    <h2>水质分析</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="water-class-pie" class="chart-container"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="region-comparison" class="chart-container"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="cod-chart" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 污染源分析 -->
+                <div class="section">
+                    <h2>污染源分析</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="summary-card">
+                                <h5>🐟 水产养殖污染</h5>
+                                <p>49个排放点，主要污染物：COD、总磷</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="summary-card">
+                                <h5>🏠 生活污水</h5>
+                                <p>25个排放点，缺乏污水处理设施</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="summary-card">
+                                <h5>🌾 农业面源污染</h5>
+                                <p>农田灌溉水和化肥农药流失</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 治理建议 -->
+                <div class="section">
+                    <h2>治理建议</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">加强水产养殖废水处理监管</li>
+                                <li class="list-group-item">推进农村生活污水处理设施建设</li>
+                                <li class="list-group-item">实施科学施肥灌溉指导</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">完善垃圾收集转运系统</li>
+                                <li class="list-group-item">加强小微企业环保监管</li>
+                                <li class="list-group-item">建立定期水质监测机制</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="bg-dark text-white text-center py-4 mt-5">
+                <div class="container">
+                    <p>数据来源：龙海南溪污染源调查工作报告（2019年11月）</p>
+                    <p>制作单位：稀水(厦门)生态科技有限公司</p>
+                </div>
+            </footer>
+
+            <script>
+                // 初始化图表
+                var waterClassChart = echarts.init(document.getElementById('water-class-pie'));
+                var codChart = echarts.init(document.getElementById('cod-chart'));
+                var regionChart = echarts.init(document.getElementById('region-comparison'));
+
+                // 设置图表选项
+                waterClassChart.setOption("{\n    \"animation\": true,\n    \"animationThreshold\": 2000,\n    \"animationDuration\": 1000,\n    \"animationEasing\": \"cubicOut\",\n    \"animationDelay\": 0,\n    \"animationDurationUpdate\": 300,\n    \"animationEasingUpdate\": \"cubicOut\",\n    \"animationDelayUpdate\": 0,\n    \"aria\": {\n        \"enabled\": false\n    },\n    \"series\": [\n        {\n            \"type\": \"pie\",\n            \"name\": \"\\u6c34\\u8d28\\u7c7b\\u522b\\u5206\\u5e03\",\n            \"colorBy\": \"data\",\n            \"legendHoverLink\": true,\n            \"selectedMode\": false,\n            \"selectedOffset\": 10,\n            \"clockwise\": true,\n            \"startAngle\": 90,\n            \"minAngle\": 0,\n            \"minShowLabelAngle\": 0,\n            \"avoidLabelOverlap\": true,\n            \"stillShowZeroSum\": true,\n            \"percentPrecision\": 2,\n            \"showEmptyCircle\": true,\n            \"emptyCircleStyle\": {\n                \"color\": \"lightgray\",\n                \"borderColor\": \"#000\",\n                \"borderWidth\": 0,\n                \"borderType\": \"solid\",\n                \"borderDashOffset\": 0,\n                \"borderCap\": \"butt\",\n                \"borderJoin\": \"bevel\",\n                \"borderMiterLimit\": 10,\n                \"opacity\": 1\n            },\n            \"data\": [\n                {\n                    \"name\": \"III\\u7c7b\",\n                    \"value\": 4\n                },\n                {\n                    \"name\": \"IV\\u7c7b\",\n                    \"value\": 3\n                },\n                {\n                    \"name\": \"\\u52a3V\\u7c7b\",\n                    \"value\": 2\n                },\n                {\n                    \"name\": \"V\\u7c7b\",\n                    \"value\": 1\n                }\n            ],\n            \"radius\": [\n                \"40%\",\n                \"75%\"\n            ],\n            \"center\": [\n                \"50%\",\n                \"50%\"\n            ],\n            \"label\": {\n                \"show\": true,\n                \"margin\": 8,\n                \"formatter\": \"{b}: {c} ({d}%)\",\n                \"valueAnimation\": false\n            },\n            \"labelLine\": {\n                \"show\": true,\n                \"showAbove\": false,\n                \"length\": 15,\n                \"length2\": 15,\n                \"smooth\": false,\n                \"minTurnAngle\": 90,\n                \"maxSurfaceAngle\": 90\n            },\n            \"rippleEffect\": {\n                \"show\": true,\n                \"brushType\": \"stroke\",\n                \"scale\": 2.5,\n                \"period\": 4\n            }\n        }\n    ],\n    \"legend\": [\n        {\n            \"data\": [\n                \"III\\u7c7b\",\n                \"IV\\u7c7b\",\n                \"\\u52a3V\\u7c7b\",\n                \"V\\u7c7b\"\n            ],\n            \"selected\": {},\n            \"show\": true,\n            \"left\": \"2%\",\n            \"top\": \"15%\",\n            \"orient\": \"vertical\",\n            \"padding\": 5,\n            \"itemGap\": 10,\n            \"itemWidth\": 25,\n            \"itemHeight\": 14,\n            \"backgroundColor\": \"transparent\",\n            \"borderColor\": \"#ccc\",\n            \"borderRadius\": 0,\n            \"pageButtonItemGap\": 5,\n            \"pageButtonPosition\": \"end\",\n            \"pageFormatter\": \"{current}/{total}\",\n            \"pageIconColor\": \"#2f4554\",\n            \"pageIconInactiveColor\": \"#aaa\",\n            \"pageIconSize\": 15,\n            \"animationDurationUpdate\": 800,\n            \"selector\": false,\n            \"selectorPosition\": \"auto\",\n            \"selectorItemGap\": 7,\n            \"selectorButtonGap\": 10\n        }\n    ],\n    \"tooltip\": {\n        \"show\": true,\n        \"trigger\": \"item\",\n        \"triggerOn\": \"mousemove|click\",\n        \"axisPointer\": {\n            \"type\": \"line\"\n        },\n        \"showContent\": true,\n        \"alwaysShowContent\": false,\n        \"showDelay\": 0,\n        \"hideDelay\": 100,\n        \"enterable\": false,\n        \"confine\": false,\n        \"appendToBody\": false,\n        \"transitionDuration\": 0.4,\n        \"textStyle\": {\n            \"fontSize\": 14\n        },\n        \"borderWidth\": 0,\n        \"padding\": 5,\n        \"order\": \"seriesAsc\"\n    },\n    \"title\": [\n        {\n            \"show\": true,\n            \"text\": \"\\u5357\\u6eaa\\u5e72\\u6d41\\u6c34\\u8d28\\u7c7b\\u522b\\u5206\\u5e03\",\n            \"target\": \"blank\",\n            \"subtarget\": \"blank\",\n            \"padding\": 5,\n            \"itemGap\": 10,\n            \"textAlign\": \"auto\",\n            \"textVerticalAlign\": \"auto\",\n            \"triggerEvent\": false\n        }\n    ]\n}");
+                codChart.setOption("{\n    \"animation\": true,\n    \"animationThreshold\": 2000,\n    \"animationDuration\": 1000,\n    \"animationEasing\": \"cubicOut\",\n    \"animationDelay\": 0,\n    \"animationDurationUpdate\": 300,\n    \"animationEasingUpdate\": \"cubicOut\",\n    \"animationDelayUpdate\": 0,\n    \"aria\": {\n        \"enabled\": false\n    },\n    \"series\": [\n        {\n            \"type\": \"bar\",\n            \"name\": \"COD\\u6d53\\u5ea6(mg/L)\",\n            \"legendHoverLink\": true,\n            \"data\": [\n                15.05,\n                15.05,\n                19.56,\n                21.06,\n                33.11,\n                22.57,\n                28.59,\n                25.58,\n                13.54,\n                19.56\n            ],\n            \"realtimeSort\": false,\n            \"showBackground\": false,\n            \"stackStrategy\": \"samesign\",\n            \"cursor\": \"pointer\",\n            \"barMinHeight\": 0,\n            \"barCategoryGap\": \"20%\",\n            \"barGap\": \"30%\",\n            \"large\": false,\n            \"largeThreshold\": 400,\n            \"seriesLayoutBy\": \"column\",\n            \"datasetIndex\": 0,\n            \"clip\": true,\n            \"zlevel\": 0,\n            \"z\": 2,\n            \"label\": {\n                \"show\": true,\n                \"margin\": 8,\n                \"valueAnimation\": false\n            }\n        }\n    ],\n    \"legend\": [\n        {\n            \"data\": [\n                \"COD\\u6d53\\u5ea6(mg/L)\"\n            ],\n            \"selected\": {},\n            \"show\": true,\n            \"padding\": 5,\n            \"itemGap\": 10,\n            \"itemWidth\": 25,\n            \"itemHeight\": 14,\n            \"backgroundColor\": \"transparent\",\n            \"borderColor\": \"#ccc\",\n            \"borderRadius\": 0,\n            \"pageButtonItemGap\": 5,\n            \"pageButtonPosition\": \"end\",\n            \"pageFormatter\": \"{current}/{total}\",\n            \"pageIconColor\": \"#2f4554\",\n            \"pageIconInactiveColor\": \"#aaa\",\n            \"pageIconSize\": 15,\n            \"animationDurationUpdate\": 800,\n            \"selector\": false,\n            \"selectorPosition\": \"auto\",\n            \"selectorItemGap\": 7,\n            \"selectorButtonGap\": 10\n        }\n    ],\n    \"tooltip\": {\n        \"show\": true,\n        \"trigger\": \"item\",\n        \"triggerOn\": \"mousemove|click\",\n        \"axisPointer\": {\n            \"type\": \"line\"\n        },\n        \"showContent\": true,\n        \"alwaysShowContent\": false,\n        \"showDelay\": 0,\n        \"hideDelay\": 100,\n        \"enterable\": false,\n        \"confine\": false,\n        \"appendToBody\": false,\n        \"transitionDuration\": 0.4,\n        \"textStyle\": {\n            \"fontSize\": 14\n        },\n        \"borderWidth\": 0,\n        \"padding\": 5,\n        \"order\": \"seriesAsc\"\n    },\n    \"xAxis\": [\n        {\n            \"show\": true,\n            \"scale\": false,\n            \"nameLocation\": \"end\",\n            \"nameGap\": 15,\n            \"axisLabel\": {\n                \"show\": true,\n                \"rotate\": 45,\n                \"margin\": 8,\n                \"valueAnimation\": false\n            },\n            \"inverse\": false,\n            \"offset\": 0,\n            \"splitNumber\": 5,\n            \"minInterval\": 0,\n            \"splitLine\": {\n                \"show\": true,\n                \"lineStyle\": {\n                    \"show\": true,\n                    \"width\": 1,\n                    \"opacity\": 1,\n                    \"curveness\": 0,\n                    \"type\": \"solid\"\n                }\n            },\n            \"animation\": true,\n            \"animationThreshold\": 2000,\n            \"animationDuration\": 1000,\n            \"animationEasing\": \"cubicOut\",\n            \"animationDelay\": 0,\n            \"animationDurationUpdate\": 300,\n            \"animationEasingUpdate\": \"cubicOut\",\n            \"animationDelayUpdate\": 0,\n            \"data\": [\n                \"\\u4e0b\\u6d66\\u6865\\u5934\",\n                \"\\u4e1c\\u6cd7\\u4e61\",\n                \"\\u8463\\u95e8\\u5934\",\n                \"\\u5357\\u6eaa\\u6865\\u95f8\",\n                \"\\u5927\\u971e\\u6751\",\n                \"\\u4e0b\\u7530\\u6751\",\n                \"148\\u4e61\\u9053\\u6865\",\n                \"\\u65b9\\u7530\\u6751\",\n                \"\\u62db\\u94f6\\u758f\\u6e2f\\u8def\\u6865\\u4e0b\",\n                \"\\u6d6e\\u5bab\\u5927\\u6865\"\n            ]\n        }\n    ],\n    \"yAxis\": [\n        {\n            \"name\": \"COD(mg/L)\",\n            \"show\": true,\n            \"scale\": false,\n            \"nameLocation\": \"end\",\n            \"nameGap\": 15,\n            \"inverse\": false,\n            \"offset\": 0,\n            \"splitNumber\": 5,\n            \"minInterval\": 0,\n            \"splitLine\": {\n                \"show\": true,\n                \"lineStyle\": {\n                    \"show\": true,\n                    \"width\": 1,\n                    \"opacity\": 1,\n                    \"curveness\": 0,\n                    \"type\": \"solid\"\n                }\n            },\n            \"animation\": true,\n            \"animationThreshold\": 2000,\n            \"animationDuration\": 1000,\n            \"animationEasing\": \"cubicOut\",\n            \"animationDelay\": 0,\n            \"animationDurationUpdate\": 300,\n            \"animationEasingUpdate\": \"cubicOut\",\n            \"animationDelayUpdate\": 0\n        }\n    ],\n    \"title\": [\n        {\n            \"show\": true,\n            \"text\": \"\\u5404\\u76d1\\u6d4b\\u70b9COD\\u6d53\\u5ea6\",\n            \"target\": \"blank\",\n            \"subtarget\": \"blank\",\n            \"padding\": 5,\n            \"itemGap\": 10,\n            \"textAlign\": \"auto\",\n            \"textVerticalAlign\": \"auto\",\n            \"triggerEvent\": false\n        }\n    ]\n}");
+                regionChart.setOption("{\n    \"animation\": true,\n    \"animationThreshold\": 2000,\n    \"animationDuration\": 1000,\n    \"animationEasing\": \"cubicOut\",\n    \"animationDelay\": 0,\n    \"animationDurationUpdate\": 300,\n    \"animationEasingUpdate\": \"cubicOut\",\n    \"animationDelayUpdate\": 0,\n    \"aria\": {\n        \"enabled\": false\n    },\n    \"series\": [\n        {\n            \"type\": \"bar\",\n            \"name\": \"\\u5e73\\u5747COD\\u6d53\\u5ea6\",\n            \"legendHoverLink\": true,\n            \"data\": [\n                17.68,\n                16.55,\n                27.46\n            ],\n            \"realtimeSort\": false,\n            \"showBackground\": false,\n            \"stackStrategy\": \"samesign\",\n            \"cursor\": \"pointer\",\n            \"barMinHeight\": 0,\n            \"barCategoryGap\": \"20%\",\n            \"barGap\": \"30%\",\n            \"large\": false,\n            \"largeThreshold\": 400,\n            \"seriesLayoutBy\": \"column\",\n            \"datasetIndex\": 0,\n            \"clip\": true,\n            \"zlevel\": 0,\n            \"z\": 2,\n            \"label\": {\n                \"show\": true,\n                \"margin\": 8,\n                \"valueAnimation\": false\n            }\n        }\n    ],\n    \"legend\": [\n        {\n            \"data\": [\n                \"\\u5e73\\u5747COD\\u6d53\\u5ea6\"\n            ],\n            \"selected\": {},\n            \"show\": true,\n            \"padding\": 5,\n            \"itemGap\": 10,\n            \"itemWidth\": 25,\n            \"itemHeight\": 14,\n            \"backgroundColor\": \"transparent\",\n            \"borderColor\": \"#ccc\",\n            \"borderRadius\": 0,\n            \"pageButtonItemGap\": 5,\n            \"pageButtonPosition\": \"end\",\n            \"pageFormatter\": \"{current}/{total}\",\n            \"pageIconColor\": \"#2f4554\",\n            \"pageIconInactiveColor\": \"#aaa\",\n            \"pageIconSize\": 15,\n            \"animationDurationUpdate\": 800,\n            \"selector\": false,\n            \"selectorPosition\": \"auto\",\n            \"selectorItemGap\": 7,\n            \"selectorButtonGap\": 10\n        }\n    ],\n    \"tooltip\": {\n        \"show\": true,\n        \"trigger\": \"item\",\n        \"triggerOn\": \"mousemove|click\",\n        \"axisPointer\": {\n            \"type\": \"line\"\n        },\n        \"showContent\": true,\n        \"alwaysShowContent\": false,\n        \"showDelay\": 0,\n        \"hideDelay\": 100,\n        \"enterable\": false,\n        \"confine\": false,\n        \"appendToBody\": false,\n        \"transitionDuration\": 0.4,\n        \"textStyle\": {\n            \"fontSize\": 14\n        },\n        \"borderWidth\": 0,\n        \"padding\": 5,\n        \"order\": \"seriesAsc\"\n    },\n    \"xAxis\": [\n        {\n            \"show\": true,\n            \"scale\": false,\n            \"nameLocation\": \"end\",\n            \"nameGap\": 15,\n            \"inverse\": false,\n            \"offset\": 0,\n            \"splitNumber\": 5,\n            \"minInterval\": 0,\n            \"splitLine\": {\n                \"show\": true,\n                \"lineStyle\": {\n                    \"show\": true,\n                    \"width\": 1,\n                    \"opacity\": 1,\n                    \"curveness\": 0,\n                    \"type\": \"solid\"\n                }\n            },\n            \"animation\": true,\n            \"animationThreshold\": 2000,\n            \"animationDuration\": 1000,\n            \"animationEasing\": \"cubicOut\",\n            \"animationDelay\": 0,\n            \"animationDurationUpdate\": 300,\n            \"animationEasingUpdate\": \"cubicOut\",\n            \"animationDelayUpdate\": 0,\n            \"data\": [\n                \"\\u4e1c\\u6cd7\\u4e61\",\n                \"\\u6d6e\\u5bab\\u9547\",\n                \"\\u767d\\u6c34\\u9547\"\n            ]\n        }\n    ],\n    \"yAxis\": [\n        {\n            \"name\": \"COD(mg/L)\",\n            \"show\": true,\n            \"scale\": false,\n            \"nameLocation\": \"end\",\n            \"nameGap\": 15,\n            \"inverse\": false,\n            \"offset\": 0,\n            \"splitNumber\": 5,\n            \"minInterval\": 0,\n            \"splitLine\": {\n                \"show\": true,\n                \"lineStyle\": {\n                    \"show\": true,\n                    \"width\": 1,\n                    \"opacity\": 1,\n                    \"curveness\": 0,\n                    \"type\": \"solid\"\n                }\n            },\n            \"animation\": true,\n            \"animationThreshold\": 2000,\n            \"animationDuration\": 1000,\n            \"animationEasing\": \"cubicOut\",\n            \"animationDelay\": 0,\n            \"animationDurationUpdate\": 300,\n            \"animationEasingUpdate\": \"cubicOut\",\n            \"animationDelayUpdate\": 0\n        }\n    ],\n    \"title\": [\n        {\n            \"show\": true,\n            \"text\": \"\\u5404\\u533a\\u57df\\u5e73\\u5747COD\\u6d53\\u5ea6\",\n            \"target\": \"blank\",\n            \"subtarget\": \"blank\",\n            \"padding\": 5,\n            \"itemGap\": 10,\n            \"textAlign\": \"auto\",\n            \"textVerticalAlign\": \"auto\",\n            \"triggerEvent\": false\n        }\n    ]\n}");
+
+                // 响应式调整
+                window.addEventListener('resize', function() {
+                    waterClassChart.resize();
+                    codChart.resize();
+                    regionChart.resize();
+                });
+            </script>
+        </body>
+        </html>
+        
