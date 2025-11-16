@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b1923d82a1c2478c0956be19c23b9b5c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    top: 10px; left: 50px; width: 300px; height: 180px; 
+                    background-color: white; border:2px solid grey; z-index:9999; 
+                    font-size:14px; padding: 10px">
+        <p><b>图例说明</b></p>
+        <p><span style="color: red;">●</span> 严重污染支流</p>
+        <p><span style="color: orange;">●</span> 重度污染支流</p>
+        <p><span style="color: green;">●</span> 干流III类水质</p>
+        <p><span style="color: blue;">●</span> 干流IV类水质</p>
+        <p><span style="color: darkred;">●</span> 干流劣V类水质</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_b1923d82a1c2478c0956be19c23b9b5c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b1923d82a1c2478c0956be19c23b9b5c = L.map(
+                "map_b1923d82a1c2478c0956be19c23b9b5c",
+                {
+                    center: [24.35, 117.85],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_78219ccf5df43c70ee193ab7867ab0b8 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_78219ccf5df43c70ee193ab7867ab0b8.addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+            var circle_marker_e5809d0d2e66159a84f67b94df597755 = L.circleMarker(
+                [24.351092, 117.763062],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_fe54a16d01c1f2d7fbf338120f3115b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5f1ba59bfb7924ddd82ab0bbf2724269 = $(`<div id="html_5f1ba59bfb7924ddd82ab0bbf2724269" style="width: 100.0%; height: 100.0%;">                 <b>下浦桥头</b><br>                 水质: III类<br>                 COD: 15.05 mg/L<br>                 总磷: 0.023 mg/L<br>                 氨氮: 0.148 mg/L                 </div>`)[0];
+                popup_fe54a16d01c1f2d7fbf338120f3115b9.setContent(html_5f1ba59bfb7924ddd82ab0bbf2724269);
+            
+        
+
+        circle_marker_e5809d0d2e66159a84f67b94df597755.bindPopup(popup_fe54a16d01c1f2d7fbf338120f3115b9)
+        ;
+
+        
+    
+    
+            var circle_marker_086206446aef945c3a775f453bb61fe2 = L.circleMarker(
+                [24.361255, 117.775849],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_a629df9a2badb5b500a067aacaad2e00 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e6f3692db6e8a3ad1e261ff425fd28e5 = $(`<div id="html_e6f3692db6e8a3ad1e261ff425fd28e5" style="width: 100.0%; height: 100.0%;">                 <b>东泗乡</b><br>                 水质: 劣V类<br>                 COD: 15.05 mg/L<br>                 总磷: 0.772 mg/L<br>                 氨氮: 0.475 mg/L                 </div>`)[0];
+                popup_a629df9a2badb5b500a067aacaad2e00.setContent(html_e6f3692db6e8a3ad1e261ff425fd28e5);
+            
+        
+
+        circle_marker_086206446aef945c3a775f453bb61fe2.bindPopup(popup_a629df9a2badb5b500a067aacaad2e00)
+        ;
+
+        
+    
+    
+            var circle_marker_794c8d30a711402d33dfb195fe0a91bf = L.circleMarker(
+                [24.368556, 117.797944],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_b6c55a2460eb865dba3afc7d5f8ba549 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ae4fe45464a31660825b892efd6193c4 = $(`<div id="html_ae4fe45464a31660825b892efd6193c4" style="width: 100.0%; height: 100.0%;">                 <b>董门头</b><br>                 水质: III类<br>                 COD: 19.56 mg/L<br>                 总磷: 0.034 mg/L<br>                 氨氮: 0.058 mg/L                 </div>`)[0];
+                popup_b6c55a2460eb865dba3afc7d5f8ba549.setContent(html_ae4fe45464a31660825b892efd6193c4);
+            
+        
+
+        circle_marker_794c8d30a711402d33dfb195fe0a91bf.bindPopup(popup_b6c55a2460eb865dba3afc7d5f8ba549)
+        ;
+
+        
+    
+    
+            var circle_marker_28158012111cbc9e7c6e0f653e91d24f = L.circleMarker(
+                [24.366614, 117.816923],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_948b20a1dfeb0628c8df81317271e2ea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef0873b73cf64b52fdbb1dde457b861c = $(`<div id="html_ef0873b73cf64b52fdbb1dde457b861c" style="width: 100.0%; height: 100.0%;">                 <b>南溪桥闸</b><br>                 水质: IV类<br>                 COD: 21.06 mg/L<br>                 总磷: 0.039 mg/L<br>                 氨氮: 0.326 mg/L                 </div>`)[0];
+                popup_948b20a1dfeb0628c8df81317271e2ea.setContent(html_ef0873b73cf64b52fdbb1dde457b861c);
+            
+        
+
+        circle_marker_28158012111cbc9e7c6e0f653e91d24f.bindPopup(popup_948b20a1dfeb0628c8df81317271e2ea)
+        ;
+
+        
+    
+    
+            var circle_marker_ecc535fc99937c4fba2447f33f976bb5 = L.circleMarker(
+                [24.366594, 117.848552],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_a714eb0433681646c4a6dd015d6b6a16 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e6a98bc0e4d6af5327bb68f4312a1302 = $(`<div id="html_e6a98bc0e4d6af5327bb68f4312a1302" style="width: 100.0%; height: 100.0%;">                 <b>大霞村</b><br>                 水质: V类<br>                 COD: 33.11 mg/L<br>                 总磷: 0.059 mg/L<br>                 氨氮: 0.487 mg/L                 </div>`)[0];
+                popup_a714eb0433681646c4a6dd015d6b6a16.setContent(html_e6a98bc0e4d6af5327bb68f4312a1302);
+            
+        
+
+        circle_marker_ecc535fc99937c4fba2447f33f976bb5.bindPopup(popup_a714eb0433681646c4a6dd015d6b6a16)
+        ;
+
+        
+    
+    
+            var circle_marker_610e3b4ba0190a8fc5aa2a0eb1925f2d = L.circleMarker(
+                [24.346732, 117.850854],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_9e535dc053f660ad73068234744ca219 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ebf1d6c9f24f016866d177511ec0bc0f = $(`<div id="html_ebf1d6c9f24f016866d177511ec0bc0f" style="width: 100.0%; height: 100.0%;">                 <b>下田村</b><br>                 水质: IV类<br>                 COD: 22.57 mg/L<br>                 总磷: 0.049 mg/L<br>                 氨氮: 0.517 mg/L                 </div>`)[0];
+                popup_9e535dc053f660ad73068234744ca219.setContent(html_ebf1d6c9f24f016866d177511ec0bc0f);
+            
+        
+
+        circle_marker_610e3b4ba0190a8fc5aa2a0eb1925f2d.bindPopup(popup_9e535dc053f660ad73068234744ca219)
+        ;
+
+        
+    
+    
+            var circle_marker_0e90efc45792087e5ad5c575ac1c587a = L.circleMarker(
+                [24.3389, 117.863466],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_f4c7259e71882402f0160fb828a97ddd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_45f7655afdc712f46ea833db3c9edb65 = $(`<div id="html_45f7655afdc712f46ea833db3c9edb65" style="width: 100.0%; height: 100.0%;">                 <b>148乡道桥</b><br>                 水质: 劣V类<br>                 COD: 28.59 mg/L<br>                 总磷: 0.787 mg/L<br>                 氨氮: 0.07 mg/L                 </div>`)[0];
+                popup_f4c7259e71882402f0160fb828a97ddd.setContent(html_45f7655afdc712f46ea833db3c9edb65);
+            
+        
+
+        circle_marker_0e90efc45792087e5ad5c575ac1c587a.bindPopup(popup_f4c7259e71882402f0160fb828a97ddd)
+        ;
+
+        
+    
+    
+            var circle_marker_1b8dce0308b3193041260b4e49c55780 = L.circleMarker(
+                [24.332577, 117.886065],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_d1ff4c25430d8d1113ca6975bdc2f32e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc655a7fd332eea1e6ea45a91d243303 = $(`<div id="html_fc655a7fd332eea1e6ea45a91d243303" style="width: 100.0%; height: 100.0%;">                 <b>方田村</b><br>                 水质: IV类<br>                 COD: 25.58 mg/L<br>                 总磷: 0.054 mg/L<br>                 氨氮: 0.064 mg/L                 </div>`)[0];
+                popup_d1ff4c25430d8d1113ca6975bdc2f32e.setContent(html_fc655a7fd332eea1e6ea45a91d243303);
+            
+        
+
+        circle_marker_1b8dce0308b3193041260b4e49c55780.bindPopup(popup_d1ff4c25430d8d1113ca6975bdc2f32e)
+        ;
+
+        
+    
+    
+            var circle_marker_282fdbe80651566e2fd3b91f5ab6acaa = L.circleMarker(
+                [24.345, 117.896759],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_b3a0faba9a978e07c0c522ed13d95c80 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_511f834c3a2ea105890ae699e3568fe1 = $(`<div id="html_511f834c3a2ea105890ae699e3568fe1" style="width: 100.0%; height: 100.0%;">                 <b>招银疏港路桥下</b><br>                 水质: III类<br>                 COD: 13.54 mg/L<br>                 总磷: 0.054 mg/L<br>                 氨氮: 0.118 mg/L                 </div>`)[0];
+                popup_b3a0faba9a978e07c0c522ed13d95c80.setContent(html_511f834c3a2ea105890ae699e3568fe1);
+            
+        
+
+        circle_marker_282fdbe80651566e2fd3b91f5ab6acaa.bindPopup(popup_b3a0faba9a978e07c0c522ed13d95c80)
+        ;
+
+        
+    
+    
+            var circle_marker_c345e25a4ade9c0db41a4c81c6e5f4af = L.circleMarker(
+                [24.360801, 117.902769],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_b89d5eddcbd1bd789b360620609ace20 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_35e142894d229f9d96e462efcff0c808 = $(`<div id="html_35e142894d229f9d96e462efcff0c808" style="width: 100.0%; height: 100.0%;">                 <b>浮宫大桥</b><br>                 水质: III类<br>                 COD: 19.56 mg/L<br>                 总磷: 0.039 mg/L<br>                 氨氮: 0.201 mg/L                 </div>`)[0];
+                popup_b89d5eddcbd1bd789b360620609ace20.setContent(html_35e142894d229f9d96e462efcff0c808);
+            
+        
+
+        circle_marker_c345e25a4ade9c0db41a4c81c6e5f4af.bindPopup(popup_b89d5eddcbd1bd789b360620609ace20)
+        ;
+
+        
+    
+    
+            var circle_marker_9f96e03d3dacf924981e7111b53cda5e = L.circleMarker(
+                [24.356914, 117.844875],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_fb0cd2b8594bf04870958ea0dabcea68 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_59617b4b1d563cb38d33a147c7386e92 = $(`<div id="html_59617b4b1d563cb38d33a147c7386e92" style="width: 100.0%; height: 100.0%;">                 <b>支12-顶詹</b><br>                 类型: 养殖污染<br>                 污染等级: 严重<br>                 COD: 85.78 mg/L<br>                 总磷: 0.22 mg/L                 </div>`)[0];
+                popup_fb0cd2b8594bf04870958ea0dabcea68.setContent(html_59617b4b1d563cb38d33a147c7386e92);
+            
+        
+
+        circle_marker_9f96e03d3dacf924981e7111b53cda5e.bindPopup(popup_fb0cd2b8594bf04870958ea0dabcea68)
+        ;
+
+        
+    
+    
+            var circle_marker_0fdcf5086e90a4472faaf9a96d5b6119 = L.circleMarker(
+                [24.369502, 117.833369],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_820e374baaf7bf8d880edfbf3d92269e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b8fbe84cd3578968645bdf16a5f0bfb3 = $(`<div id="html_b8fbe84cd3578968645bdf16a5f0bfb3" style="width: 100.0%; height: 100.0%;">                 <b>支16-太江村</b><br>                 类型: 混合污染<br>                 污染等级: 严重<br>                 COD: 78.26 mg/L<br>                 总磷: 0.306 mg/L                 </div>`)[0];
+                popup_820e374baaf7bf8d880edfbf3d92269e.setContent(html_b8fbe84cd3578968645bdf16a5f0bfb3);
+            
+        
+
+        circle_marker_0fdcf5086e90a4472faaf9a96d5b6119.bindPopup(popup_820e374baaf7bf8d880edfbf3d92269e)
+        ;
+
+        
+    
+    
+            var circle_marker_2d29ce0b756883733969628c72c86dfc = L.circleMarker(
+                [24.364903, 117.78408],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_6bd110fd8502a4744cab05d2c57a7f96 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64123c05d6fd3887663b1a0b2a638e1a = $(`<div id="html_64123c05d6fd3887663b1a0b2a638e1a" style="width: 100.0%; height: 100.0%;">                 <b>支28-田洋</b><br>                 类型: 混合污染<br>                 污染等级: 严重<br>                 COD: 76.75 mg/L<br>                 总磷: 0.385 mg/L                 </div>`)[0];
+                popup_6bd110fd8502a4744cab05d2c57a7f96.setContent(html_64123c05d6fd3887663b1a0b2a638e1a);
+            
+        
+
+        circle_marker_2d29ce0b756883733969628c72c86dfc.bindPopup(popup_6bd110fd8502a4744cab05d2c57a7f96)
+        ;
+
+        
+    
+    
+            var circle_marker_7966bd886abe99bd98b12241bccb9354 = L.circleMarker(
+                [24.368527, 117.79316],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_317361cd17403231b55c88c9ec67e542 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_54039b9c9976d746d95505c6ff7f2425 = $(`<div id="html_54039b9c9976d746d95505c6ff7f2425" style="width: 100.0%; height: 100.0%;">                 <b>支38-大唐</b><br>                 类型: 混合污染<br>                 污染等级: 严重<br>                 COD: 55.68 mg/L<br>                 总磷: 1.226 mg/L                 </div>`)[0];
+                popup_317361cd17403231b55c88c9ec67e542.setContent(html_54039b9c9976d746d95505c6ff7f2425);
+            
+        
+
+        circle_marker_7966bd886abe99bd98b12241bccb9354.bindPopup(popup_317361cd17403231b55c88c9ec67e542)
+        ;
+
+        
+    
+    
+            var circle_marker_a1bd1da9887c6d82deee0fe404ab8baa = L.circleMarker(
+                [24.355489, 117.897317],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_194bfbba702202afc7e8455f933e7318 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17befa74249678ac3f9f5065d96a4392 = $(`<div id="html_17befa74249678ac3f9f5065d96a4392" style="width: 100.0%; height: 100.0%;">                 <b>支2-龙润果蔬</b><br>                 类型: 养殖污染<br>                 污染等级: 重度<br>                 COD: 52.67 mg/L<br>                 总磷: 0.09 mg/L                 </div>`)[0];
+                popup_194bfbba702202afc7e8455f933e7318.setContent(html_17befa74249678ac3f9f5065d96a4392);
+            
+        
+
+        circle_marker_a1bd1da9887c6d82deee0fe404ab8baa.bindPopup(popup_194bfbba702202afc7e8455f933e7318)
+        ;
+
+        
+    
+    
+            var circle_marker_a7724d93af379e63d816314aa5dda5e7 = L.circleMarker(
+                [24.342459, 117.894388],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_eee23d55e01ba6d260c72492e53481d4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0290379d7a644f7812d179369cc7726e = $(`<div id="html_0290379d7a644f7812d179369cc7726e" style="width: 100.0%; height: 100.0%;">                 <b>支3-圳仔尾</b><br>                 类型: 养殖污染<br>                 污染等级: 重度<br>                 COD: 48.16 mg/L<br>                 总磷: 0.137 mg/L                 </div>`)[0];
+                popup_eee23d55e01ba6d260c72492e53481d4.setContent(html_0290379d7a644f7812d179369cc7726e);
+            
+        
+
+        circle_marker_a7724d93af379e63d816314aa5dda5e7.bindPopup(popup_eee23d55e01ba6d260c72492e53481d4)
+        ;
+
+        
+    
+    
+            var circle_marker_2fba0fb8837fed9a30410af60a0c1d1e = L.circleMarker(
+                [24.361916, 117.845568],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_fe807e6cc9ca7da8409639b93229650e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_67045caf09090dd248e28fc066d7f162 = $(`<div id="html_67045caf09090dd248e28fc066d7f162" style="width: 100.0%; height: 100.0%;">                 <b>支21-大霞村</b><br>                 类型: 养殖污染<br>                 污染等级: 严重<br>                 COD: 64.71 mg/L<br>                 总磷: 0.353 mg/L                 </div>`)[0];
+                popup_fe807e6cc9ca7da8409639b93229650e.setContent(html_67045caf09090dd248e28fc066d7f162);
+            
+        
+
+        circle_marker_2fba0fb8837fed9a30410af60a0c1d1e.bindPopup(popup_fe807e6cc9ca7da8409639b93229650e)
+        ;
+
+        
+    
+    
+            var circle_marker_f4d80a489bc1d50c6a1b28795435f4ec = L.circleMarker(
+                [24.353401, 117.865779],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_a2f33ba111c643bd05081447e855d6d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fbb356c64211600b74294382664b9fde = $(`<div id="html_fbb356c64211600b74294382664b9fde" style="width: 100.0%; height: 100.0%;">                 <b>支30-兴海丰水产</b><br>                 类型: 养殖污染<br>                 污染等级: 重度<br>                 COD: 43.64 mg/L<br>                 总磷: 0.275 mg/L                 </div>`)[0];
+                popup_a2f33ba111c643bd05081447e855d6d3.setContent(html_fbb356c64211600b74294382664b9fde);
+            
+        
+
+        circle_marker_f4d80a489bc1d50c6a1b28795435f4ec.bindPopup(popup_a2f33ba111c643bd05081447e855d6d3)
+        ;
+
+        
+    
+    
+            var circle_marker_de505c8ebdef06a00209e13b2ce6ebad = L.circleMarker(
+                [24.334742, 117.892906],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_95f5f0ce13bb5feb9fa6fd8c4475054d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_88443ace884c28b9633048f2f8d45bb7 = $(`<div id="html_88443ace884c28b9633048f2f8d45bb7" style="width: 100.0%; height: 100.0%;">                 <b>支6-九节桥</b><br>                 类型: 生活污染<br>                 污染等级: 重度<br>                 COD: 51.17 mg/L<br>                 总磷: 0.341 mg/L                 </div>`)[0];
+                popup_95f5f0ce13bb5feb9fa6fd8c4475054d.setContent(html_88443ace884c28b9633048f2f8d45bb7);
+            
+        
+
+        circle_marker_de505c8ebdef06a00209e13b2ce6ebad.bindPopup(popup_95f5f0ce13bb5feb9fa6fd8c4475054d)
+        ;
+
+        
+    
+    
+            var circle_marker_f4d52f602869a331608b0a025cc4d4b8 = L.circleMarker(
+                [24.330491, 117.87214],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_7fb2f8120dafaba5535c46c83da7cdb9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b0aa60014dea8803e975161eb80799d8 = $(`<div id="html_b0aa60014dea8803e975161eb80799d8" style="width: 100.0%; height: 100.0%;">                 <b>支5-田厝村</b><br>                 类型: 生活+工业<br>                 污染等级: 严重<br>                 COD: 58.69 mg/L<br>                 总磷: 0.286 mg/L                 </div>`)[0];
+                popup_7fb2f8120dafaba5535c46c83da7cdb9.setContent(html_b0aa60014dea8803e975161eb80799d8);
+            
+        
+
+        circle_marker_f4d52f602869a331608b0a025cc4d4b8.bindPopup(popup_7fb2f8120dafaba5535c46c83da7cdb9)
+        ;
+
+        
+    
+    
+            var circle_marker_801560ebe3cae161e11869a0b64e7787 = L.circleMarker(
+                [24.349022, 117.85222],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_a4c550c10dcc41ace93d2f4cf7f951bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd7d641563a1c142f945b6f7ee9c1c95 = $(`<div id="html_cd7d641563a1c142f945b6f7ee9c1c95" style="width: 100.0%; height: 100.0%;">                 <b>支10-洪埭</b><br>                 类型: 生活污染<br>                 污染等级: 严重<br>                 COD: 60.2 mg/L<br>                 总磷: 0.224 mg/L                 </div>`)[0];
+                popup_a4c550c10dcc41ace93d2f4cf7f951bc.setContent(html_cd7d641563a1c142f945b6f7ee9c1c95);
+            
+        
+
+        circle_marker_801560ebe3cae161e11869a0b64e7787.bindPopup(popup_a4c550c10dcc41ace93d2f4cf7f951bc)
+        ;
+
+        
+    
+    
+            var circle_marker_8769b75356888304566300b19d529e1e = L.circleMarker(
+                [24.340135, 117.854175],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_b1923d82a1c2478c0956be19c23b9b5c);
+        
+    
+        var popup_dd61c5a98814b7371432599cafbecfdc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b1d13bcf95cb6046d17423604147dffa = $(`<div id="html_b1d13bcf95cb6046d17423604147dffa" style="width: 100.0%; height: 100.0%;">                 <b>支7-三保村</b><br>                 类型: 生活污染<br>                 污染等级: 重度<br>                 COD: 50.06 mg/L<br>                 总磷: 0.318 mg/L                 </div>`)[0];
+                popup_dd61c5a98814b7371432599cafbecfdc.setContent(html_b1d13bcf95cb6046d17423604147dffa);
+            
+        
+
+        circle_marker_8769b75356888304566300b19d529e1e.bindPopup(popup_dd61c5a98814b7371432599cafbecfdc)
+        ;
+
+        
+    
+</script>
+</html>
